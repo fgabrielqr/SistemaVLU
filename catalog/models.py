@@ -14,10 +14,13 @@ class Category(models.Model):
         verbose_name_plural = 'Categorias'
         ordering = ['name']
 
+    def __str__(self):
+        return self.name
+
 class Book(models.Model):
     name = models.CharField('Nome', max_length=100)
     slug = models.SlugField('Indentificador', max_length=100)
-    Category = models.ForeignKey('catalog.Category', verbose_name='Categoria', on_delete=models.CASCADE)
+    category = models.ForeignKey('catalog.Category', verbose_name='Categoria', on_delete=models.CASCADE)
     description = models.TextField('Descrição', blank=True)
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8)
 
@@ -28,3 +31,6 @@ class Book(models.Model):
         verbose_name = 'Livro'
         verbose_name_plural = 'Livros'
         ordering = ['name']
+
+    def __str__(self):
+        return self.name
