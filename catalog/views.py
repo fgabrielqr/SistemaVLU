@@ -3,4 +3,7 @@ from .models import Book
 # Create your views here.
 
 def book_list(request):
-    return render(request, 'catalog/book_list.html')
+    context = {
+        'book_list': Book.objects.all()
+    }
+    return render(request, 'catalog/book_list.html', context)
