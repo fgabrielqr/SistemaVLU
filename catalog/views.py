@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Book
+from .models import Book, Category
 # Create your views here.
 
 def book_list(request):
@@ -7,3 +7,11 @@ def book_list(request):
         'book_list': Book.objects.all()
     }
     return render(request, 'catalog/book_list.html', context)
+
+def category(request, slug):
+    category = Category.objects.get(slug=slug)
+    context = {
+        'current_category': category,
+        'book_list': Book.objects.filter(category=category),
+    }
+    return render(request, 'catalog/category.html', context)
