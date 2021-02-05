@@ -5,8 +5,5 @@ from django.http import HttpResponse
 def index(request):
     return render(request, 'index.html')
 
-def book(request):
-    return render(request, 'book.html')
-
 def contact(request):
     return render(request, 'contact.html')
