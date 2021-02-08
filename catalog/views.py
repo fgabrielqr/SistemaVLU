@@ -7,12 +7,14 @@ from .models import Book, Category
 class BookListView(generic.ListView):
     model = Book
     template_name = 'catalog/book_list.html'
+    paginate_by = 3
 
 book_list = BookListView.as_view()
 
 class CategoryListView(generic.ListView):
     template_name = 'catalog/category.html'
     context_object_name = 'book_list'
+    paginate_by = 3
 
     def get_queryset(self):
         return Book.objects.filter(category__slug=self.kwargs['slug'])

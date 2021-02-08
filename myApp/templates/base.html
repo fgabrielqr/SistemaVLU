@@ -38,7 +38,11 @@
 			</li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Minha Conta</a></li>
+              {% if user.is_authenticated %}
+			  <li><a href="{% url 'logout' %}">Sair</a></li>
+			  {% else %}
+			  <li><a href="{% url 'login' %}">Entrar</a></li>
+			  {% endif %}
           </ul>
         </div>
       </div>
@@ -51,7 +55,7 @@
 			    <ul class="list-unstyled">
 			      <li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
 			      <li><a href="">Início</a></li>
-			      <li><a href="">Produtos</a></li>
+			      <li><a href="">Livros</a></li>
 			      <li><a href="">Contato</a></li>
 			      <li><a href="">Termos e Privacidade</a></li>
 			    </ul>
