@@ -32,7 +32,7 @@ def contact(request):
 class RegisterView(CreateView):
 
     form_class = UserCreationForm
-    template_name = 'register.html'
+    template_name = 'accounts/register.html'
     model = User
     success_url = reverse_lazy('index')
 

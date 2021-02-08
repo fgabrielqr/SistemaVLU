@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # apps
     'myApp.apps.MyappConfig',
     'catalog.apps.CatalogConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,5 @@ DEFAULT_FROM_EMAIL = 'admin@djangobookdesapega.com'
 # auth
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
+LOGOUT_URL = 'logout'
+AUTH_USER_MODEL = 'accounts.User'
