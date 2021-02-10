@@ -1,0 +1,12 @@
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+        <a href="{{ book.get_absolute_url }}">
+            <img src="http://placehold.it/350x250" alt="" />
+        </a>
+        <div class="caption">
+            <h3>{{ book }}</h3>
+            {{ book.description|linebreaks }}
+            <p><a href="{{ book.get_absolute_url }}" class="btn btn-success" role="button">Detalhes</a> <a href="{% url 'create_cartitem' book.slug %}" class="btn btn-default" role="button">Adicionar</a></p>
+        </div>
+    </div>
+</div>

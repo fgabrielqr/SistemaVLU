@@ -15,7 +15,10 @@
       </a>
   </div>
   <div class="col-sm-8">
-     {{ book.description|linebreaks }}
+      <p class="text-right">
+          <a href="{% url 'create_cartitem' book.slug %}" class="btn btn-success">Adicionar ao Carrinho</a>
+      </p>
+      {{ book.description|linebreaks }}
   </div>
 </div>
 {% endblock %}

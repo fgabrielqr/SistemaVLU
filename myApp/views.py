@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import View, TemplateView, CreateView
 from django.contrib.auth import get_user_model
+from django.contrib import messages
 
 from .forms import ContactForm
 
@@ -23,18 +24,10 @@ def contact(request):
     if form.is_valid():
         form.send_mail()
         success = True
+    elif request.method == 'POST':
+        messages.error(request, 'Formulário inválido')
     context = {
         'form': form,
         'success': success
     }
     return render(request, 'contact.html', context)
-
-class RegisterView(CreateView):
-
-    form_class = UserCreationForm
-    template_name = 'accounts/register.html'
-    model = User
-    success_url = reverse_lazy('index')
-
-
-register = RegisterView.as_view()
