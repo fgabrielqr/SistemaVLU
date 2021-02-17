@@ -7,3 +7,4 @@ urlpatterns = [
     re_path('^livros/(?P<slug>[\w_-]+)/$', views.book, name='book'),
 
 ]
+
