@@ -3,6 +3,7 @@
 from django.db import models
 from django.conf import settings
 
+from catalog.models import Book
 
 class CartItemManager(models.Manager):
 
@@ -86,6 +87,42 @@ class Order(models.Model):
 
     def __str__(self):
         return 'Pedido #{}'.format(self.pk)
+
+    def books(self):
+        books_ids = self.items.values_list('book')
+        return Book.objects.filter(pk__in=books_ids)
+
+    def total(self):
+        aggregate_queryset = self.items.aggregate(
+            total=models.Sum(
+                models.F('price') * models.F('quantity'),
+                output_field=models.DecimalField()
+            )
+        )
+        return aggregate_queryset['total']
+
+    def complete(self):
+        self.status = 1
+        self.save()
+
+    def paypal(self):
+        self.payment_option = 'paypal'
+        self.save()
+        paypal_dict = {
+            'upload': '1',
+            'business': settings.PAYPAL_EMAIL,
+            'invoice': self.pk,
+            'cmd': '_cart',
+            'currency_code': 'BRL',
+            'charset': 'utf-8',
+        }
+        index = 1
+        for item in self.items.all():
+            paypal_dict['amount_{}'.format(index)] = '%.2f' % item.price
+            paypal_dict['item_name_{}'.format(index)] = item.book.name
+            paypal_dict['quantity_{}'.format(index)] = item.quantity
+            index = index + 1
+        return paypal_dict
 
 
 class OrderItem(models.Model):

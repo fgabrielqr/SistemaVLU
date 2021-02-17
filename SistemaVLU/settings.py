@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #libs
     'widget_tweaks',
-
+    'paypal.standard.ipn',
     # apps
     'myApp.apps.MyappConfig',
     'catalog.apps.CatalogConfig',
@@ -162,3 +162,6 @@ MESSAGE_TAGS = {
     messages_constants.WARNING: 'warning',
     messages_constants.ERROR: 'danger',
 }
+
+PAYPAL_TEST = True
+PAYPAL_EMAIL = 'sb-nbmgo5093892@personal.example.com'
