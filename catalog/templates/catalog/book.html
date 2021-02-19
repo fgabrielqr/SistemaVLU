@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load thumbnail %}
 {% block title %}
 {{ book }} | {{ block.super }}
 {% endblock %}
@@ -10,9 +10,13 @@
 </div>
 <div class="row">
   <div class="col-sm-4">
-      <a href="#" class="thumbnail">
-          <img src="http://placehold.it/350x250" alt="" />
-      </a>
+      <a href="{{ book.get_absolute_url }}">
+           {% if book.image %}
+            <img src="{{ book.image|thumbnail_url:'book_image'}}" alt="" />
+            {% else %}
+            <img src="http://placehold.it/350x250" alt="" />
+            {% endif %}
+        </a>
   </div>
   <div class="col-sm-8">
       <p class="text-right">

@@ -22,5 +22,6 @@ urlpatterns = [
     path('conta/', include('accounts.urls')),
     path('compras/', include('checkout.urls')),
     path('paypal/', include('paypal.standard.ipn.urls')),
+    path('cadastro/', include('register.urls')),
     path('admin/', admin.site.urls),
 ]
