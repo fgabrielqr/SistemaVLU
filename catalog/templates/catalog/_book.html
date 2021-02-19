@@ -1,8 +1,9 @@
+{% load thumbnail %}
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
         <a href="{{ book.get_absolute_url }}">
            {% if book.image %}
-            <img src="{{ book.image.url }}" alt="" />
+            <img src="{{ book.image|thumbnail_url:'book_image'}}" alt="" />
             {% else %}
             <img src="http://placehold.it/350x250" alt="" />
             {% endif %}

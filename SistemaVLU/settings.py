@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #libs
     'widget_tweaks',
+    'easy_thumbnails',
     'paypal.standard.ipn',
+    'watson',
     # apps
     'myApp.apps.MyappConfig',
     'catalog.apps.CatalogConfig',
@@ -175,3 +177,10 @@ MESSAGE_TAGS = {
 
 PAYPAL_TEST = True
 PAYPAL_EMAIL = 'sb-nbmgo5093892@personal.example.com'
+
+# Thumbnails
+THUMBNAIL_ALIASES = {
+    '': {
+        'book_image': {'size': (285, 160), 'crop': True},
+    },
+}
