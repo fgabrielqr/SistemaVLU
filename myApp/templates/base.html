@@ -35,7 +35,7 @@
               </ul>
             </li>
           <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'book_list' %}" id="download">Cadastrar <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="" id="download">Cadastrar <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
                   <li><a href="{% url 'registerCategory' %}">Categorias</a></li>
                   <li><a href="{% url 'registerBook' %}">Livros</a></li>
@@ -52,12 +52,18 @@
 	        </div>
         </form>
           <li><a href="{% url 'cart_item' %}">Carrinho</a></li>
-              {% if user.is_authenticated %}
-			  <li><a href="{% url 'logout' %}">Sair</a></li>
-			  {% else %}
-			  <li><a href="{% url 'login' %}">Entrar</a></li>
-                  <li><a href="{% url 'register' %}">Cadastro</a></li>
-			  {% endif %}
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="" id="download">Usuário <span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="download">
+                  {% if user.is_authenticated %}
+                      <li><a href="{% url 'logout' %}">Sair</a></li>
+                  {% else %}
+                      <li><a href="{% url 'login' %}">Entrar</a></li>
+                      <li><a href="{% url 'register' %}">Cadastro</a></li>
+                  {% endif %}
+                </ul>
+              </li>
+			<li>
           </ul>
         </div>
       </div>
