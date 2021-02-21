@@ -10,6 +10,4 @@ urlpatterns = [
         name='paypal_view'),
     path('meusPedidos/', views.order_list, name='order_list'),
     re_path('^meusPedidos/(?P<pk>\d+)/$', views.order_detail, name='order_detail'),
-
-
 ]

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+    Excluir | {{ block.super }}
+{% endblock %}
+
+{% block container %}
+<div class="page-header">
+  <h1>Excluir</h1>
+<p class="lead">
+    Confirme para excluir o pedido definitivamente.
+</p>
+<hr>
+    <form action="" method="POST">
+        <p>
+            Deseja excluir o pedido: {{ object }}?
+        </p>
+
+        {% csrf_token %}
+        {{ form.as_p }}
+       <button type="submit" class="btn btn-danger">Excluir</button>
+    </form>
+</div>
+{% endblock %}

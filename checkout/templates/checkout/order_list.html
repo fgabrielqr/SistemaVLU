@@ -12,7 +12,7 @@ Meus Pedidos
     <thead>
         <tr>
             <th>
-                ID
+                Pedido
             </th>
             <th>
                 Livros
@@ -22,6 +22,9 @@ Meus Pedidos
             </th>
             <th>
                 Data
+            </th>
+            <th>
+                Remover
             </th>
         </tr>
     </thead>
@@ -41,6 +44,9 @@ Meus Pedidos
             </td>
             <td>
                 {{ order.created|date:"d/m/Y" }}
+            </td>
+            <td>
+               <a href="" class="btn btn-danger btn-sm" title="Remover">X</a>
             </td>
         </tr>
         {% endfor %}

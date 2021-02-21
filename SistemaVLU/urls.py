@@ -15,6 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from catalog.views import BookViewSet
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'books', BookViewSet)
 
 urlpatterns = [
     path('', include('myApp.urls')),
@@ -23,5 +28,7 @@ urlpatterns = [
     path('compras/', include('checkout.urls')),
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('cadastro/', include('register.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
 ]

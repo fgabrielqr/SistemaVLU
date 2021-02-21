@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'checkout.apps.CheckoutConfig',
     'register.apps.RegisterConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

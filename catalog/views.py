@@ -3,6 +3,8 @@ from django.views import generic
 from django.db import models
 from watson import search as watson
 from .models import Book, Category
+from rest_framework import viewsets
+from .serializers import BookSerializer
 # Create your views here.
 
 class BookListView(generic.ListView):
@@ -40,3 +42,7 @@ def book(request, slug):
         'book': book
     }
     return render(request, 'catalog/book.html', context)
+
+class BookViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
