@@ -31,3 +31,8 @@ def contact(request):
         'success': success
     }
     return render(request, 'contact.html', context)
+
+class PrivacyView(TemplateView):
+    template_name = 'privacy.html'
+
+privacy = PrivacyView.as_view()

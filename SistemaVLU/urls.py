@@ -15,11 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from catalog.views import BookViewSet
+from catalog.views import BookViewSet, CategoryViewSet
+from accounts.views import UserViewSet
+from checkout.views import CartItemViewSet, OrderViewSet, OrderItemViewSet
 from rest_framework import routers
+from django.conf.urls.static import static
+from django.conf import settings
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='My Swagger API Documentation')
 
 router = routers.DefaultRouter()
 router.register(r'books', BookViewSet)
+router.register(r'categorys', CategoryViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'carts', CartItemViewSet)
+router.register(r'orders', OrderViewSet)
+router.register(r'ordersItems', OrderItemViewSet)
 
 urlpatterns = [
     path('', include('myApp.urls')),
@@ -30,5 +42,11 @@ urlpatterns = [
     path('cadastro/', include('register.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('', include(router.urls)),
+    path('swagger/', schema_view),
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )

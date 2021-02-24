@@ -14,12 +14,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="{% url 'index' %}" class="navbar-brand">Book Desapega</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+          <a href="{% url 'book_list' %}" class="navbar-brand">Book Desapega</a>
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
@@ -41,14 +36,11 @@
                   <li><a href="{% url 'registerBook' %}">Livros</a></li>
               </ul>
             </li>
-			<li>
-				<a href="{% url 'contact' %}">Contato</a>
-			</li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           <form class="navbar-form navbar-left" role="search" action="{% url 'book_list' %}">
 	        <div class="form-group">
-	          <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
+	          <input name="q" type="text" class="form-control" placeholder="Pesquisar por..." />
 	        </div>
         </form>
           <li><a href="{% url 'cart_item' %}">Carrinho</a></li>
@@ -56,6 +48,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="" id="download">Usuário <span class="caret"></span></a>
                 <ul class="dropdown-menu" aria-labelledby="download">
                   {% if user.is_authenticated %}
+                      <li><a href="{% url 'index' %}">Minha Conta</a></li>
                       <li><a href="{% url 'logout' %}">Sair</a></li>
                   {% else %}
                       <li><a href="{% url 'login' %}">Entrar</a></li>
@@ -83,7 +76,7 @@
 			    <ul class="list-unstyled">
 			      <li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
 			      <li><a href="{% url 'contact' %}">Contato</a></li>
-			      <li><a href="">Termos e Privacidade</a></li>
+			      <li><a href="{% url 'privacy' %}">Termos e Privacidade</a></li>
 			    </ul>
 			  </div>
 			</div>

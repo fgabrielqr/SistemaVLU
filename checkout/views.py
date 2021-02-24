@@ -10,10 +10,12 @@ from django.views.decorators.csrf import csrf_exempt
 from paypal.standard.forms import PayPalPaymentsForm
 from paypal.standard.models import ST_PP_COMPLETED
 from paypal.standard.ipn.signals import valid_ipn_received
+from rest_framework import viewsets
+from .serializers import CartItemSerializer, OrderSerializer, OrderItemSerializer
 
 from catalog.models import Book
 
-from .models import CartItem, Order
+from .models import CartItem, Order, OrderItem
 
 
 class CreateCartItemView(RedirectView):
@@ -140,6 +142,18 @@ def paypal_notification(sender, **kwargs):
 
 valid_ipn_received.connect(paypal_notification)
 
+# API
+class CartItemViewSet(viewsets.ModelViewSet):
+    queryset = CartItem.objects.all()
+    serializer_class = CartItemSerializer
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+class OrderItemViewSet(viewsets.ModelViewSet):
+    queryset = OrderItem.objects.all()
+    serializer_class = OrderItemSerializer
 
 create_cartitem = CreateCartItemView.as_view()
 cart_item = CartItemView.as_view()

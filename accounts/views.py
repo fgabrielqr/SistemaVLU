@@ -3,6 +3,9 @@ from django.views.generic import CreateView, TemplateView, UpdateView, FormView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import PasswordChangeForm
+from .serializers import UserSerializer
+from rest_framework import viewsets
+
 # Create your views here.
 
 from .models import User
@@ -24,7 +27,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'accounts/update_user.html'
     fields = ['name', 'email']
-    success_url = reverse_lazy('accounts:index')
+    success_url = reverse_lazy('index')
 
     def get_object(self):
         return self.request.user
@@ -45,6 +48,9 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
         form.save()
         return super(UpdatePasswordView, self).form_valid(form)
 
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 index = IndexView.as_view()
 register = RegisterView.as_view()

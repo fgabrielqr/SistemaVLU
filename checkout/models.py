@@ -63,7 +63,6 @@ class Order(models.Model):
 
     PAYMENT_OPTION_CHOICES = (
         ('deposit', 'Depósito'),
-        ('pagseguro', 'PagSeguro'),
         ('paypal', 'Paypal'),
     )
 

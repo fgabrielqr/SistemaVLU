@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'checkout.apps.CheckoutConfig',
     'register.apps.RegisterConfig',
     'rest_framework',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -183,6 +184,11 @@ PAYPAL_EMAIL = 'sb-nbmgo5093892@personal.example.com'
 # Thumbnails
 THUMBNAIL_ALIASES = {
     '': {
-        'book_image': {'size': (285, 160), 'crop': True},
+        'book_image': {'size': (350, 250), 'crop': True},
     },
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
 }
