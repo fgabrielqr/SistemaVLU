@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book, Category
+from catalog.models import Book, Category
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,4 +10,3 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
-

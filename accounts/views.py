@@ -1,10 +1,7 @@
-from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView, UpdateView, FormView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import PasswordChangeForm
-from .serializers import UserSerializer
-from rest_framework import viewsets
 
 # Create your views here.
 
@@ -48,9 +45,6 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
         form.save()
         return super(UpdatePasswordView, self).form_valid(form)
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 index = IndexView.as_view()
 register = RegisterView.as_view()
