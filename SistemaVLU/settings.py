@@ -185,7 +185,7 @@ PAYPAL_EMAIL = 'sb-nbmgo5093892@personal.example.com'
 # Thumbnails
 THUMBNAIL_ALIASES = {
     '': {
-        'book_image': {'size': (350, 250), 'crop': True},
+        'book_image': {'size': (350, 250), 'crop': False},
     },
 }
 

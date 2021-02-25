@@ -10,42 +10,42 @@ Meus Pedidos
 <h2>Meus Pedidos</h2>
 <table class="table table-bordered">
     <thead>
-        <tr>
-            <th>
+        <tr >
+            <th class="text-center">
                 Pedido
             </th>
-            <th>
+            <th class="text-center">
                 Livros
             </th>
-            <th>
+            <th class="text-center">
                 Situação
             </th>
-            <th>
+            <th class="text-center">
                 Data
             </th>
-            <th>
-
+            <th class="text-center">
+                Remover
             </th>
         </tr>
     </thead>
     <tbody>
         {% for order in object_list %}
         <tr>
-            <td>
+            <td class="text-center">
                 <a href="{% url 'order_detail' order.pk %}">#{{ order.pk }}</a>
             </td>
-            <td>
+            <td class="text-center">
                 {% for book in order.books %}
                 {{ book.name }}{% if not forloop.last %}<br />{% endif %}
                 {% endfor %}
             </td>
-            <td>
+            <td class="text-center">
                 {{ order.get_status_display }}
             </td>
-            <td>
+            <td class="text-center">
                 {{ order.created|date:"d/m/Y" }}
             </td>
-            <td>
+            <td class="text-center">
                <a href="{% url 'orderLisDelete' order.pk %}" class="btn btn-danger btn-sm" title="Remover">X</a>
             </td>
         </tr>

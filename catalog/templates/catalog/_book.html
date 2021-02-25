@@ -3,18 +3,17 @@
     <div class="thumbnail">
         <a href="{{ book.get_absolute_url }}">
            {% if book.image %}
-            <img src="{{ book.image|thumbnail_url:'book_image'}}" alt="" />
+            <img src="{{ book.image|thumbnail_url:'book_image'}}" />
             {% else %}
             <img src="http://placehold.it/350x250" alt="" />
             {% endif %}
         </a>
         <div class="caption">
             <h3>{{ book }}</h3>
-            {{ book.description|linebreaks }}
             <dt>Preço: R$ {{ book.price|floatformat:"2" }}</dt>
             <br/>
-            <p><a href="{{ book.get_absolute_url }}" class="btn btn-success" role="button">Detalhes</a>
-                <a href="{% url 'create_cartitem' book.slug %}" class="btn btn-default" role="button">Adicionar</a></p>
+            <p><a href="{{ book.get_absolute_url }}" class="btn btn-warning" role="button">Detalhes</a>
+                <a href="{% url 'create_cartitem' book.slug %}" class="btn btn-info" role="button">Adicionar</a></p>
         </div>
     </div>
 </div>

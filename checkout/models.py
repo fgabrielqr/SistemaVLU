@@ -56,8 +56,8 @@ class OrderManager(models.Manager):
 class Order(models.Model):
 
     STATUS_CHOICES = (
-        (0, 'Aguardando Pagamento'),
-        (1, 'Concluída'),
+        (0, 'Concluída'),
+        (1, 'Aguardando Pagamento'),
         (2, 'Cancelada'),
     )
 
