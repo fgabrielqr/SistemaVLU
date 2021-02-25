@@ -65,6 +65,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'checkout.middleware.cart_item_middleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -148,7 +149,7 @@ MEDIA_URL = '/media/'
 
 ALLOWED_HOSTS = ['*']
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
