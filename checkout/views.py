@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import RedirectView, TemplateView, ListView, DetailView
+from django.views.generic import RedirectView, TemplateView, ListView, DetailView, DeleteView
 from django.forms import modelformset_factory
 from django.urls import reverse
 from django.contrib import messages
@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from paypal.standard.forms import PayPalPaymentsForm
 from paypal.standard.models import ST_PP_COMPLETED
 from paypal.standard.ipn.signals import valid_ipn_received
+from django.urls import reverse_lazy
 
 from catalog.models import Book
 
@@ -96,6 +97,11 @@ class OrderListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
+
+class OrderLisDelete(DeleteView):
+    model = Order
+    template_name = 'checkout/form-excluir.html'
+    success_url = reverse_lazy('order_list')
 
 class OrderDetailView(LoginRequiredMixin, DetailView):
 

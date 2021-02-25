@@ -24,7 +24,7 @@ Meus Pedidos
                 Data
             </th>
             <th>
-                Remover
+
             </th>
         </tr>
     </thead>
@@ -46,7 +46,7 @@ Meus Pedidos
                 {{ order.created|date:"d/m/Y" }}
             </td>
             <td>
-               <a href="" class="btn btn-danger btn-sm" title="Remover">X</a>
+               <a href="{% url 'orderLisDelete' order.pk %}" class="btn btn-danger btn-sm" title="Remover">X</a>
             </td>
         </tr>
         {% endfor %}
