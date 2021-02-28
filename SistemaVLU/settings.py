@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'rest_framework',
     'rest_framework_swagger',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    'corsheaders.middleware.CorsMiddleware',
     'checkout.middleware.cart_item_middleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
