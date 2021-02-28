@@ -1,1 +1,1 @@
-web: gunicorn SistemaVLU.wsgi
+web: gunicorn SistemaVLU.wsgi --log-file -
