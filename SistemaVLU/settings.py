@@ -203,14 +203,6 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', 'AKIAVZ2TTTRETJG6Y6E4')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', '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')
-AWS_STORAGE_BUCKET_NAME = 'book-desapega'
-
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 try:
     from .local_settings import *
 except ImportError:
