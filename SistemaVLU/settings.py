@@ -211,6 +211,15 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 #AWS_DEFAULT_ACL = None
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Book Desapega <felipe007trompa@gmail.com>'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'felipe007trompa@gmail.com'
+EMAIL_HOST_PASSWORD = 'felipegqr23'
+EMAIL_PORT = 587
+
 try:
     from .local_settings import *
 except ImportError:
