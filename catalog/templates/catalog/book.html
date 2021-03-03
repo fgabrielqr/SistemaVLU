@@ -17,8 +17,10 @@
             <img src="http://placehold.it/350x250" alt="" />
             {% endif %}
         </a>
+  <h3>Preço: R$ {{ book.price|floatformat:"2" }}</h3>
   </div>
   <div class="col-sm-8">
+      <h3>Descrição:</h3>
       {{ book.description|linebreaks }}
   </div>
 </div>
